@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2 {
+  color: rgb(54, 54, 54);
+}
+
+@import "./login";
+@import "./home";
