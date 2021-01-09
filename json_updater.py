@@ -28,19 +28,30 @@ def flipkart_scrape():
     #     print("No product found")
     return price.strip('₹')
 
+# def amazon_scrape():
+#     url = input()
+#     page = requests.get(url, headers=HEADERS)
+
 
 def json_update(json_file,curr_dtime, price_dict):
     # print(json_file)
     # print(curr_dtime)
-    json_file['datetime'] = str(curr_dtime)
-    for i in price_dict.keys(): 
-        json_file['websites'][i] = price_ls[i]
-
+    #for appending prices
+    # print(json_file)
+    for i in price_dict.keys():
+        tmp = json_file['websites'][i]
+        tmp.append(price_dict[i])
+        json_file['websites'][i] = tmp
+    #for appending datetime
+    tmp = json_file['datetime']
+    tmp.append(str(curr_dtime))
+    json_file['datetime'] = tmp
+    # print(json_file)
     with open('temp.json', 'w') as j_out:
         json.dump(json_file, j_out)
 
 
 if __name__ == '__main__':
-    # with open('temp.json','r') as file:
-    #     json_update(json.load(file), datetime.datetime.now(), {'amazon': 2020,'flipkart': 2021})
-    print(flipkart_scrape())
+    with open('temp.json','r') as file:
+        json_update(json.load(file), datetime.datetime.now(), {'amazon': 20202,'flipkart': 20212})
+    # print(flipkart_scrape())
