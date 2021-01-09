@@ -10,7 +10,7 @@ HEADERS = ({'User-Agent':
             'Accept-Language': 'en-US, en;q=0.5'})
 
 
-def flipkart_scrape():
+def flipkart():
     url = input()
     page = requests.get(url, headers=HEADERS)
     soup = BeautifulSoup(page.content, features='html.parser')
@@ -19,14 +19,14 @@ def flipkart_scrape():
     return price.strip('₹')
 
 
-def amazon_scrape():
-    url = input()
-    page = requests.get(url, headers=HEADERS)
-    soup = BeautifulSoup(page.content, features='html.parser')
-    span_tag = soup.find_all('span', {"class": "a-price-whole"})
-    print(span_tag)
-    price = span_tag[0].get_text()
-    return price
+# def amazon_scrape():
+#     url = input()
+#     page = requests.get(url, headers=HEADERS)
+#     soup = BeautifulSoup(page.content, features='html.parser')
+#     span_tag = soup.find_all('span', {"class": "a-price-whole"})
+#     print(span_tag)
+#     price = span_tag[0].get_text()
+#     return price
 
 
 def paytm():
