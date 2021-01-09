@@ -42,10 +42,10 @@ class Home extends Component {
     return (
       <div className="home-page">
         <Navbar className="color-nav" variant="dark">
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="/home">DealChoose</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">About</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
         </Navbar>
         <br />
@@ -60,7 +60,6 @@ class Home extends Component {
               <Form.Label>Enter the Flipkart URL of product</Form.Label>
               <Form.Control placeholder="Flipkart URL" />
             </Form.Group>
-
             <Button variant="primary" type="submit">
               Submit
             </Button>

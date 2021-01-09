@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Login from "./components/login";
 import Error404 from "./components/404";
 import Home from "./components/home";
+import About from "./components/about";
 
 //styles import
 import "./styles/app.scss";
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/home" component={Home} />
         <Route exact path="/" component={Login} />
+        <Route path="/about" component={About} />
         <Route component={Error404} />
       </Switch>
     </Router>
