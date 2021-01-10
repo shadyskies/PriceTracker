@@ -4,7 +4,8 @@ from .forms import ProductForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from .json_updater import json_update, main_price_getter_initial_json_create, check_json_exists
-
+from .line_plot import plot
+import os
 
 # Create your views here.
 
@@ -22,7 +23,7 @@ def get_links_view(request):
         print(username)
         form = ProductForm(request.POST)
         # form.save()
-        print("valid form")
+        # print("valid form")
         links = request.POST.get("links")
         if check_json_exists(username=username):
             json_update(url=links, username=username)
@@ -35,8 +36,12 @@ def get_links_view(request):
 
 
 def get_dashboard(request):
-    context = {}
-    return render(request, "products/dashboard.html", context)
+    print(os.listdir("../plots/"))
+    # context = {"image": "../plots/test.png"}
+    if request.method == 'POST':
+        username = str(request.user)
+        plot(username=username)
+    return render(request, "products/dashboard.html", {})
 
 
 def register(request):
@@ -47,7 +52,7 @@ def register(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
-            return redirect('/')
+            return redirect('/accounts/login/')
     else:
         form = UserCreationForm()
     context = {"form": form}
