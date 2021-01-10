@@ -104,7 +104,7 @@ def main_price_getter_initial_json_create(username, url):
     filepath = str("../json_files/") + username + str(".json")
     with open(filepath, "w") as file:
         curr_dtime = str(datetime.datetime.now())
-        json_dict = {"username": username, "website": {website: [price]}, "datetime": [curr_dtime]}
+        json_dict = {"username": username, "website": {website: [price]}, "datetime": [curr_dtime], "query":url}
         json.dump(json_dict, file)
 
 
